@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — SocialMind AI</title>
+  <meta name="description" content="Get help with SocialMind AI. Find answers to common questions or contact our support team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: rgba(255,255,255,0.08);
+      --purple: #7c5cfc;
+      --purple-soft: #a78bfa;
+      --pink: #f472b6;
+      --text: #f0eeff;
+      --muted: #8b85a8;
+      --gradient: linear-gradient(135deg, #7c5cfc, #f472b6);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(124,92,252,0.10) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(244,114,182,0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,15,0.8);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-soft);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid rgba(124,92,252,0.3);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .contact-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gradient);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 32px rgba(124,92,252,0.3);
+    }
+
+    .email-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* FAQ */
+    .faq-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover { border-color: rgba(124,92,252,0.3); }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(124,92,252,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--purple-soft);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* Response time */
+    .response-note {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(124,92,252,0.08);
+      border: 1px solid rgba(124,92,252,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 48px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .response-note span:first-child { font-size: 1.2rem; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .contact-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">SocialMind AI</a>
+    <ul class="nav-links">
+      <li><a href="/support">Support</a></li>
+      <li><a href="/privacy_policy.html">Privacy</a></li>
+      <li><a href="/terms_of_use.html">Terms</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <p class="section-label">Help Center</p>
+      <h1>How can we help?</h1>
+      <p class="subtitle">Find answers to common questions below,<br>or reach out to our support team directly.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>📬 Contact Support</h2>
+      <p>Our support team is here to help. We typically respond within 24 hours on business days.</p>
+      <a href="mailto:support@socialmind.dev" class="email-btn">
+        ✉️ support@socialmind.dev
+      </a>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What is SocialMind AI?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          SocialMind AI is an AI-powered content generator for social media. It helps you create captions, hooks, bios, replies, and hashtags for Instagram, TikTok, LinkedIn, and Twitter (X) in seconds.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What platforms are supported?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          SocialMind AI supports Instagram, TikTok, LinkedIn, and Twitter (X). Each platform has its own tailored content style and generation settings.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What are the subscription plans?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          We offer three plans: Free (limited generations), Basic (more generations and platforms), and Premium (unlimited generations, all platforms, and photo analysis). You can upgrade anytime from the Settings screen in the app.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How do I restore my purchases?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Open SocialMind AI → Go to Settings → Tap "Restore Purchases". Your subscription is linked to your Apple ID, so make sure you're signed in with the same account you used to purchase.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How do I cancel my subscription?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          You can cancel your subscription anytime through your iPhone Settings → Apple ID → Subscriptions → SocialMind AI → Cancel Subscription. You'll continue to have access until the end of your billing period.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I use the app in multiple languages?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes! SocialMind AI supports content generation in multiple languages including English, Spanish, Arabic, Ukrainian, and many more. Just specify your preferred language when generating content.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How does photo analysis work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Upload a photo from your library and our AI will analyze the image and generate relevant captions and content ideas based on what it sees. Photo analysis is available on Basic and Premium plans.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          I have a problem not listed here. What should I do?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Please contact us at support@socialmind.dev and describe your issue in detail. We'll get back to you as soon as possible, typically within 24 hours on business days.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="response-note">
+      <span>⏱️</span>
+      <span>Our typical response time is <strong style="color: var(--text)">within 24 hours</strong> on business days. We're a small team and appreciate your patience!</span>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy_policy.html">Privacy Policy</a>
+      <a href="/terms_of_use.html">Terms of Use</a>
+      <a href="mailto:support@socialmind.dev">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 SocialMind. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggle(btn) {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
