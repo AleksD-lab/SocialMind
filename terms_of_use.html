@@ -1,67 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Use — SocialMind</title>
-<style>
-  body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 24px; color: #1a1a1a; line-height: 1.7; }
-  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-  h2 { font-size: 20px; font-weight: 600; margin-top: 32px; }
-  p, li { font-size: 16px; color: #333; }
-  ul { padding-left: 20px; }
-  .date { color: #888; font-size: 14px; margin-bottom: 32px; }
-  a { color: #7C3AED; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — SocialMind AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --border: rgba(255,255,255,0.08);
+      --purple-soft: #a78bfa; --text: #f0eeff; --muted: #8b85a8;
+      --gradient: linear-gradient(135deg, #7c5cfc, #f472b6);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(124,92,252,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.8); }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    main { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 140px 24px 80px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--purple-soft); text-decoration: none; font-size: 0.9rem; font-weight: 500; margin-bottom: 40px; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 0.7; }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .updated { color: var(--muted); font-size: 0.875rem; margin-bottom: 48px; }
+    h2 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin: 40px 0 12px; color: var(--text); }
+    p { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 16px; font-size: 0.95rem; }
+    ul { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 16px; padding-left: 20px; font-size: 0.95rem; }
+    li { margin-bottom: 8px; }
+    strong { color: var(--text); font-weight: 500; }
+    a { color: var(--purple-soft); }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; margin-top: 80px; }
+    .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-links { display: none; } }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html" class="logo">SocialMind AI</a>
+    <ul class="nav-links">
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy_policy.html">Privacy</a></li>
+      <li><a href="terms_of_use.html">Terms</a></li>
+    </ul>
+  </nav>
+  <main>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <h1>Terms of Use</h1>
+    <p class="updated">Last updated: April 12, 2026</p>
 
-<h1>Terms of Use</h1>
-<p class="date">Last updated: April 12, 2026</p>
+    <p>Please read these Terms of Use carefully before using SocialMind. By using the app, you agree to be bound by these terms.</p>
 
-<p>Please read these Terms of Use carefully before using SocialMind. By using the app, you agree to be bound by these terms.</p>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By downloading or using SocialMind, you agree to these Terms of Use. If you do not agree, please do not use the app.</p>
 
-<h2>1. Acceptance of Terms</h2>
-<p>By downloading or using SocialMind, you agree to these Terms of Use. If you do not agree, please do not use the app.</p>
+    <h2>2. Description of Service</h2>
+    <p>SocialMind is an AI-powered social media content generator that helps users create captions, bios, hashtags, hooks, and replies for various social media platforms including Instagram, TikTok, LinkedIn, and Twitter/X.</p>
 
-<h2>2. Description of Service</h2>
-<p>SocialMind is an AI-powered social media content generator that helps users create captions, stories ideas, bios, hashtags, hooks, and replies for various social media platforms including Instagram, TikTok, LinkedIn, and Twitter/X.</p>
+    <h2>3. Subscriptions</h2>
+    <ul>
+      <li><strong>Free plan:</strong> Limited to 3 generations total.</li>
+      <li><strong>Basic plan:</strong> $4.99/month or $29.99/year — 30 generations per month.</li>
+      <li><strong>Premium plan:</strong> $9.99/month or $59.99/year — unlimited generations.</li>
+      <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
+      <li>You can manage and cancel subscriptions in your Apple ID Account Settings.</li>
+      <li>No refunds for partial subscription periods.</li>
+    </ul>
 
-<h2>3. Subscriptions</h2>
-<ul>
-  <li><strong>Free plan:</strong> Limited to 3 generations total.</li>
-  <li><strong>Basic plan:</strong> $4.99/month or $29.99/year — 30 generations per month.</li>
-  <li><strong>Premium plan:</strong> $9.99/month or $59.99/year — unlimited generations.</li>
-  <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
-  <li>You can manage and cancel subscriptions in your Apple ID Account Settings.</li>
-  <li>No refunds for partial subscription periods.</li>
-</ul>
+    <h2>4. Acceptable Use</h2>
+    <p>You agree NOT to use SocialMind to generate:</p>
+    <ul>
+      <li>Content that is illegal, harmful, threatening, or abusive.</li>
+      <li>Spam or misleading content.</li>
+      <li>Content that violates intellectual property rights.</li>
+      <li>Content that discriminates against any person or group.</li>
+      <li>False or misleading information.</li>
+    </ul>
 
-<h2>4. Acceptable Use</h2>
-<p>You agree NOT to use SocialMind to generate:</p>
-<ul>
-  <li>Content that is illegal, harmful, threatening, or abusive.</li>
-  <li>Spam or misleading content.</li>
-  <li>Content that violates intellectual property rights.</li>
-  <li>Content that discriminates against any person or group.</li>
-  <li>False or misleading information.</li>
-</ul>
+    <h2>5. AI-Generated Content</h2>
+    <p>Content generated by SocialMind is powered by Anthropic's Claude AI. We are not responsible for the accuracy, quality, or appropriateness of AI-generated content. You are solely responsible for reviewing and using any generated content in compliance with applicable laws and platform rules.</p>
 
-<h2>5. AI-Generated Content</h2>
-<p>Content generated by SocialMind is powered by OpenAI. We are not responsible for the accuracy, quality, or appropriateness of AI-generated content. You are solely responsible for reviewing and using any generated content in compliance with applicable laws and platform rules.</p>
+    <h2>6. Intellectual Property</h2>
+    <p>The SocialMind app, including its design and code, is owned by us. Content you generate using the app belongs to you. You grant us no rights to your generated content.</p>
 
-<h2>6. Intellectual Property</h2>
-<p>The SocialMind app, including its design and code, is owned by us. Content you generate using the app belongs to you. You grant us no rights to your generated content.</p>
+    <h2>7. Disclaimer of Warranties</h2>
+    <p>SocialMind is provided "as is" without warranties of any kind. We do not guarantee that the app will be error-free or uninterrupted.</p>
 
-<h2>7. Disclaimer of Warranties</h2>
-<p>SocialMind is provided "as is" without warranties of any kind. We do not guarantee that the app will be error-free or uninterrupted.</p>
+    <h2>8. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of SocialMind.</p>
 
-<h2>8. Limitation of Liability</h2>
-<p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of SocialMind.</p>
+    <h2>9. Changes to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.</p>
 
-<h2>9. Changes to Terms</h2>
-<p>We reserve the right to modify these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.</p>
-
-<h2>10. Contact</h2>
-<p>For questions about these Terms, contact us at:<br>
-<a href="mailto:info@socialmind.dev">info@socialmind.dev</a></p>
+    <h2>10. Contact</h2>
+    <p>For questions about these Terms, contact us at:<br>
+    <a href="mailto:support@socialmind.dev">support@socialmind.dev</a></p>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="mailto:support@socialmind.dev">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 SocialMind. All rights reserved.</p>
+  </footer>
+</body>
+</html>

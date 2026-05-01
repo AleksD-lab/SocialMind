@@ -4,349 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SocialMind AI — AI-Powered Social Media Content Generator</title>
-  <meta name="description" content="Create scroll-stopping social media content in seconds with SocialMind AI. Generate captions, hooks, bios, and hashtags for Instagram, TikTok, LinkedIn, and Twitter.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --border: rgba(255,255,255,0.08);
-      --purple: #7c5cfc;
-      --purple-soft: #a78bfa;
-      --pink: #f472b6;
-      --text: #f0eeff;
-      --muted: #8b85a8;
+      --bg: #0a0a0f; --surface: #12121a; --border: rgba(255,255,255,0.08);
+      --purple: #7c5cfc; --purple-soft: #a78bfa; --text: #f0eeff; --muted: #8b85a8;
       --gradient: linear-gradient(135deg, #7c5cfc, #f472b6);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 30% 20%, rgba(124,92,252,0.12) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(244,114,182,0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Nav */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      background: rgba(10,10,15,0.8);
-    }
-
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.4rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(124,92,252,0.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(244,114,182,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.8); }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(124,92,252,0.15);
-      border: 1px solid rgba(124,92,252,0.3);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      color: var(--purple-soft);
-      margin-bottom: 32px;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--purple-soft);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-
-    h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 48px;
-      animation: fadeUp 0.6s 0.2s ease both;
-      font-weight: 300;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--gradient);
-      color: white;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: opacity 0.2s, transform 0.2s;
-      box-shadow: 0 8px 32px rgba(124,92,252,0.3);
-    }
-
+    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; color: var(--purple-soft); margin-bottom: 32px; }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--purple-soft); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
+    h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 48px; font-weight: 300; }
+    .cta-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--gradient); color: white; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 8px 32px rgba(124,92,252,0.3); }
     .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 1rem;
-      border: 1px solid var(--border);
-      transition: color 0.2s, border-color 0.2s;
-    }
-
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); text-decoration: none; padding: 14px 28px; border-radius: 12px; font-weight: 500; font-size: 1rem; border: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
     .btn-secondary:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-
-    /* Features */
-    .features {
-      position: relative;
-      z-index: 1;
-      padding: 80px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--purple-soft);
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 60px;
-      letter-spacing: -0.02em;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .feature-card:hover {
-      border-color: rgba(124,92,252,0.3);
-      transform: translateY(-4px);
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .feature-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* Platforms */
-    .platforms {
-      position: relative;
-      z-index: 1;
-      padding: 80px 24px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .platform-list {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .platform-chip {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 10px 24px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Footer */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 40px 24px;
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
+    .features { position: relative; z-index: 1; padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-soft); margin-bottom: 16px; text-align: center; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-align: center; margin-bottom: 60px; letter-spacing: -0.02em; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.3s, transform 0.3s; }
+    .feature-card:hover { border-color: rgba(124,92,252,0.3); transform: translateY(-4px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .feature-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+    .platforms { position: relative; z-index: 1; padding: 80px 24px; text-align: center; max-width: 800px; margin: 0 auto; }
+    .platform-list { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+    .platform-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 10px 24px; font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
-
-    .footer-copy {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-    }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-links { display: none; } }
   </style>
 </head>
 <body>
-
   <nav>
-    <div class="logo">SocialMind AI</div>
+    <a href="index.html" class="logo">SocialMind AI</a>
     <ul class="nav-links">
-      <li><a href="/support">Support</a></li>
-      <li><a href="/privacy_policy.html">Privacy</a></li>
-      <li><a href="/terms_of_use.html">Terms</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy_policy.html">Privacy</a></li>
+      <li><a href="terms_of_use.html">Terms</a></li>
     </ul>
   </nav>
-
   <section class="hero">
     <div class="badge">Now Available on the App Store</div>
     <h1>Create content<br>that <span>actually works</span></h1>
@@ -356,47 +71,21 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on App Store
       </a>
-      <a href="/support" class="btn-secondary">Get Support →</a>
+      <a href="support.html" class="btn-secondary">Get Support →</a>
     </div>
   </section>
-
   <section class="features">
     <p class="section-label">Features</p>
     <h2 class="section-title">Everything you need to create</h2>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">✍️</div>
-        <h3>AI-Powered Captions</h3>
-        <p>Generate engaging captions tailored to each platform's unique style and audience expectations.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🪝</div>
-        <h3>Viral Hooks</h3>
-        <p>Craft attention-grabbing opening lines that stop the scroll and drive engagement instantly.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📸</div>
-        <h3>Photo Analysis</h3>
-        <p>Upload your photo and let AI generate the perfect caption based on your image content.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">#️⃣</div>
-        <h3>Smart Hashtags</h3>
-        <p>Get optimized hashtag sets that maximize your reach on each specific platform.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <h3>Multi-Language</h3>
-        <p>Create content in English, Spanish, Arabic, Ukrainian, and many more languages.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Instant Results</h3>
-        <p>No complicated setup. Choose your platform, describe your idea, get results in seconds.</p>
-      </div>
+      <div class="feature-card"><div class="feature-icon">✍️</div><h3>AI-Powered Captions</h3><p>Generate engaging captions tailored to each platform's unique style and audience expectations.</p></div>
+      <div class="feature-card"><div class="feature-icon">🪝</div><h3>Viral Hooks</h3><p>Craft attention-grabbing opening lines that stop the scroll and drive engagement instantly.</p></div>
+      <div class="feature-card"><div class="feature-icon">📸</div><h3>Photo Analysis</h3><p>Upload your photo and let AI generate the perfect caption based on your image content.</p></div>
+      <div class="feature-card"><div class="feature-icon">#️⃣</div><h3>Smart Hashtags</h3><p>Get optimized hashtag sets that maximize your reach on each specific platform.</p></div>
+      <div class="feature-card"><div class="feature-icon">🌍</div><h3>Multi-Language</h3><p>Create content in English, Spanish, Arabic, Ukrainian, and many more languages.</p></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><h3>Instant Results</h3><p>No complicated setup. Choose your platform, describe your idea, get results in seconds.</p></div>
     </div>
   </section>
-
   <section class="platforms">
     <p class="section-label">Supported Platforms</p>
     <h2 class="section-title">All your platforms,<br>one app</h2>
@@ -407,16 +96,14 @@
       <div class="platform-chip">𝕏 Twitter (X)</div>
     </div>
   </section>
-
   <footer>
     <div class="footer-links">
-      <a href="/support">Support</a>
-      <a href="/privacy_policy.html">Privacy Policy</a>
-      <a href="/terms_of_use.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="terms_of_use.html">Terms of Use</a>
       <a href="mailto:support@socialmind.dev">Contact</a>
     </div>
     <p class="footer-copy">© 2026 SocialMind. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
